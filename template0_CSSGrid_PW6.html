@@ -43,17 +43,34 @@
       gap: 10px;
       padding: 10px;
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 1fr 4fr 1fr;
+      grid-template-rows: repeat(5, 1fr);
       grid-auto-rows: 1fr;
       grid-auto-flow: row;
       box-sizing: border-box;
-      /* align-items: stretch; */
+      align-items: stretch;
+
+      @media (max-width: 640px)
+      {
+        grid-template-columns: 1fr;
+        /* grid-template-rows: 1fr 2fr repeat(3, 1fr); */
+
+        grid-template-rows: 
+          auto /* header */
+          minmax(100px, 2fr) /* article 2x plus grand */
+          repeat(3, minmax(50px, 1fr)) /* les 3 autres */
+        ;
+      }
     }
 
     header, footer
     {
       min-height: 10vh;
-      grid-column: 1 / -1; /* prends toute la largeur */
+      grid-column: 1 / 5;
+
+      @media (max-width: 640px)
+      {
+        grid-column: 1;
+      }
     }
 
     header
@@ -63,35 +80,84 @@
 
     footer
     {
-      grid-row: span 4;
+      grid-row: 5 / 6;
     }
 
     article, nav, aside
     {
       grid-row-start: 2;
-      grid-row-end: 4;
+      grid-row-end: 5;
     }
 
     nav, aside
     {
       min-height: 70vh;
+
+      @media (max-width: 640px)
+      {
+        min-height: inherit;
+        /* max-height: 10vh; */
+      }
     }
 
     nav
     {
       grid-column: 1 / 2;
+
+      @media (max-width: 640px)
+      {
+        grid-column: 1;
+        grid-row: 3 / 4;
+        /* max-height: 10vh; */
+      }
     }
 
     aside
     {
       grid-column-start: 4;
       grid-column-end: 5;
+
+      @media (max-width: 640px)
+      {
+        grid-column: 1;
+        grid-row: 4 / 5;
+        /* max-height: 10vh; */
+      }
     }
 
     article
     {
       min-height: 70vh;
       grid-column: 2 / 4;
+
+      @media (max-width: 640px)
+      {
+        grid-column: 1;
+        min-height: inherit;
+        max-height: 21vh;
+      }
+    }
+
+
+    /* Partie uniquement responsive mobile */
+
+    @media (max-width: 640px)
+    {
+
+
+
+      article
+      {
+        grid-column: 1;
+        min-height: inherit;
+        max-height: 21vh;
+      }
+
+      header, footer, nav, aside
+      {
+        min-height: 10vh;
+        max-height: auto;
+      }
     }
 
 
