@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS Grid responsive</title>
+  <style>
+
+    /* Common styles NE PAS MODIFIER */
+    body, html{
+      padding:0;
+      margin:0;
+      background:#999;
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+    header{
+      background:#feb;
+    }
+    article{
+      background:#dd8;
+    }
+    nav{
+      background:#ccf;
+    }
+    aside{
+      background:#ccf;
+    }
+    footer{
+      background:#feb;
+    }
+    header, article, nav, aside, footer{
+      border-radius:5px;
+      padding:5px;
+    }
+
+    /* Votre code CSS pour design par Grid ci-après */
+
+    body
+    {
+      display: grid;
+      gap: 10px;
+      padding: 10px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr 4fr 1fr;
+      grid-auto-rows: 1fr;
+      grid-auto-flow: row;
+      box-sizing: border-box;
+      /* align-items: stretch; */
+    }
+
+    header, footer
+    {
+      min-height: 10vh;
+      grid-column: 1 / -1; /* prends toute la largeur */
+    }
+
+    header
+    {
+      grid-row: 1 / 2;
+    }
+
+    footer
+    {
+      grid-row: span 4;
+    }
+
+    article, nav, aside
+    {
+      grid-row-start: 2;
+      grid-row-end: 4;
+    }
+
+    nav, aside
+    {
+      min-height: 70vh;
+    }
+
+    nav
+    {
+      grid-column: 1 / 2;
+    }
+
+    aside
+    {
+      grid-column-start: 4;
+      grid-column-end: 5;
+    }
+
+    article
+    {
+      min-height: 70vh;
+      grid-column: 2 / 4;
+    }
+
+
+
+
+
+  </style>
+</head>
+<!-- NE PAS MODIFIER LE CODE CI-APRES -->
+<body>
+  <header>Header</header>
+  <article>Article</article>
+  <nav>Navigation</nav>
+  <aside>Aside</aside>
+  <footer>Footer</footer>
+</body>
+</html>
